@@ -38,7 +38,10 @@ const Post = ({ post }: Props) => {
           </p>
         </div>
         {/* Body */}
-
+        <div className="py-4">
+          <h2 className="text-xl font-semibold">{post.title}</h2>
+          <p className="mt-2 text-sm font-light">{post.body}</p>
+        </div>
         {/* Image */}
 
         {/* ImageFooter */}
