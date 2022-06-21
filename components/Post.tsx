@@ -43,8 +43,8 @@ const Post = ({ post }: Props) => {
           <p className="mt-2 text-sm font-light">{post.body}</p>
         </div>
         {/* Image */}
-
-        {/* ImageFooter */}
+        <img className="w-full" src={post.image} alt="" />
+        {/* Footer */}
       </div>
     </div>
   )
