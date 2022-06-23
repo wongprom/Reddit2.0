@@ -11,12 +11,21 @@ import {
 import Avatar from './Avatar'
 import TimeAgo from 'react-timeago'
 import Link from 'next/link'
+import { MrMiyagi } from '@uiball/loaders'
 
 type Props = {
   post: Post
 }
 
 const Post = ({ post }: Props) => {
+  // Instead of  if (!post)... you can serverSide render post
+  if (!post)
+    return (
+      <div className="flex w-full items-center justify-center p-10 text-xl">
+        <MrMiyagi size={35} color="#FF4501" />
+      </div>
+    )
+
   return (
     <Link href={`/post/${post.id}`}>
       <div className="flex cursor-pointer rounded-md border border-gray-300 bg-white shadow-sm hover:border hover:border-gray-600">

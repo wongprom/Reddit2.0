@@ -136,6 +136,17 @@ type Query {
       configuration: "postgresql_config"
     )
 
+  getPostListByPostId(post_id: ID!): Post
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      query: """
+      select * from "post"
+      where "post"."id" = $1
+      """
+      configuration: "postgresql_config"
+    )
+
   getPostListByTopic(topic: String!): [Post]
     @dbquery(
       type: "postgresql"
