@@ -4,8 +4,21 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import Post from '../../components/Post'
 import { GET_POST_BY_POST_ID } from '../../graphql/queries'
+import { SubmitHandler, useForm } from 'react-hook-form'
+
+type FormData = {
+  comment: string
+}
 
 const PostPage = () => {
+  const {
+    register,
+    setValue,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<FormData>()
+
   const router = useRouter()
   const { data: session } = useSession()
 
@@ -17,6 +30,14 @@ const PostPage = () => {
 
   const post: Post = data?.getPostListByPostId
 
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
+    console.log(
+      '🚀 ~ file: [postid].tsx ~ line 34 ~ constonSubmit:SubmitHandler<FormData>= ~ data',
+      data
+    )
+    // post comment here....
+  }
+
   return (
     <div className="mx-auto my-7 max-w-5xl">
       <Post post={post} />
@@ -25,8 +46,12 @@ const PostPage = () => {
           Comment as <span className="text-red-500">{session?.user?.name}</span>
         </p>
 
-        <form className="flex flex-col space-y-2">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-col space-y-2"
+        >
           <textarea
+            {...register('comment')}
             disabled={!session}
             className="h-24 rounded-md border border-gray-200 p-2 pl-4 outline-none disabled:bg-gray-50"
             placeholder={
