@@ -8,7 +8,6 @@ const Subreddit = () => {
   const {
     query: { topic },
   } = useRouter()
-  console.log('🚀 ~ file: [topic].tsx ~ line 9 ~ Subreddit ~ topic', topic)
 
   return (
     <div className={`h-24 bg-red-400 p-8`}>
@@ -26,7 +25,7 @@ const Subreddit = () => {
         </div>
       </div>
       <div className="mx-auto mt-5 max-w-5xl pb-5">
-        <PostBox />
+        <PostBox subreddit={topic as string} />
         <Feed />
       </div>
     </div>
