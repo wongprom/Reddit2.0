@@ -17,7 +17,7 @@ import { signIn, signOut, useSession } from 'next-auth/react'
 const Header = () => {
   const { data: session } = useSession()
   return (
-    <div className="sticky top-0 flex items-center bg-white p-2 shadow-sm">
+    <div className="sticky top-0 z-50 flex items-center bg-white p-2 shadow-sm">
       <div className="relative h-10 w-20 flex-shrink-0 cursor-pointer">
         <Link href="/">
           <Image
