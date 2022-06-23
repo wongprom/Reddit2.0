@@ -27,6 +27,8 @@ These instructions will get you a copy of the project up and running on your loc
 - [React Hook Form](https://react-hook-form.com/) - Performant, flexible and extensible forms with easy-to-use validation.
 - [React Hot Toast](https://react-hot-toast.com/) - Add beautiful notifications to your React app with `react-hot-toast`.
 - [React-TimeAgo](https://www.npmjs.com/package/react-timeago) - A simple time-ago component for React.
+- [Loaders](https://uiball.com/loaders/) - Free loaders & spinners for your next project. Built with HTML, CSS and a soupçon of SVG.<br>
+  Available for React and copypasta.
 
 ### Prerequisites
 
