@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
+import Link from 'next/link'
 import { HomeIcon, SearchIcon, MenuIcon } from '@heroicons/react/solid'
 import {
   ChevronDownIcon,
@@ -16,13 +17,15 @@ import { signIn, signOut, useSession } from 'next-auth/react'
 const Header = () => {
   const { data: session } = useSession()
   return (
-    <div className="sticky top-0 flex bg-white p-2 shadow-sm">
+    <div className="sticky top-0 flex items-center bg-white p-2 shadow-sm">
       <div className="relative h-10 w-20 flex-shrink-0 cursor-pointer">
-        <Image
-          objectFit="contain"
-          src="https://links.papareact.com/fqy"
-          layout="fill"
-        />
+        <Link href="/">
+          <Image
+            objectFit="contain"
+            src="https://links.papareact.com/fqy"
+            layout="fill"
+          />
+        </Link>
       </div>
       <div className="mx-7 flex items-center xl:min-w-[300px]">
         <HomeIcon className="h-5 w-5" />
