@@ -29,6 +29,6 @@ type Post = {
   title: string
   username: string
   votes: Vote[]
-  comments: Comment[]
+  comments: Comments[]
   subreddit: Subreddit[]
 }

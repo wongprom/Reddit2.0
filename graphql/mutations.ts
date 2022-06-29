@@ -40,6 +40,7 @@ export const ADD_COMMENT = gql`
       created_at
       id
       post_id
+      text
       username
     }
   }
