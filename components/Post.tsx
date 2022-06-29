@@ -62,6 +62,20 @@ const Post = ({ post }: Props) => {
     setVote(vote)
   }, [data])
 
+  const displayVotes = (data: any) => {
+    const votes: Vote[] = data?.getVotesByPostId
+
+    const displayNumber = votes?.reduce(
+      (total, vote) => (vote.upvote ? (total += 1) : (total -= 1)),
+      0
+    )
+    if (votes?.length === 0) {
+      return votes[0]?.upvote ? 1 : -1
+    }
+
+    return displayNumber
+  }
+
   if (!post)
     return (
       <div className="flex w-full items-center justify-center p-10 text-xl">
@@ -80,7 +94,7 @@ const Post = ({ post }: Props) => {
               vote && 'text-blue-400'
             }`}
           />
-          <p className="text-xs font-bold text-black">0</p>
+          <p className="text-xs font-bold text-black">{displayVotes(data)}</p>
           <ArrowDownIcon
             onClick={() => Upvote(false)}
             className={`voteButtons hover:text-red-400 ${
