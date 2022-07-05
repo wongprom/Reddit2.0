@@ -21,10 +21,6 @@ type FormData = {
 }
 
 const PostBox = ({ subreddit }: Props) => {
-  console.log(
-    '🚀 ~ file: PostBox.tsx ~ line 24 ~ PostBox ~ subreddit',
-    subreddit
-  )
   const { data: session } = useSession()
   const [imageBoxOpen, setImageBoxOpen] = useState<boolean>(false)
   const [addPost] = useMutation(ADD_POST, {
@@ -40,13 +36,7 @@ const PostBox = ({ subreddit }: Props) => {
   } = useForm<FormData>()
 
   const onSubmit = handleSubmit(async (formData) => {
-    console.log(
-      '🚀 ~ file: PostBox.tsx ~ line 26 ~ onSubmit ~ formData',
-      formData
-    )
-
     const notification = toast.loading('Creating new post...')
-    // Query for subreddit topic...
 
     try {
       const {
@@ -59,16 +49,9 @@ const PostBox = ({ subreddit }: Props) => {
         },
       })
 
-      console.log('getSubredditListByTopic => ', getSubredditListByTopic)
       const subredditExists = getSubredditListByTopic.length > 0
-      console.log(
-        '🚀 ~ file: PostBox.tsx ~ line 53 ~ onSubmit ~ subredditExists',
-        subredditExists
-      )
 
       if (!subredditExists) {
-        console.log('Subreddit is new --> creating a new subreddit')
-
         const {
           data: { insertSubreddit: newSubreddit },
         } = await addSubreddit({
@@ -76,8 +59,6 @@ const PostBox = ({ subreddit }: Props) => {
             topic: formData.subreddit,
           },
         })
-
-        console.log('creating post...', { formData })
         const image = formData.postImage || ''
 
         const {
@@ -91,13 +72,8 @@ const PostBox = ({ subreddit }: Props) => {
             username: session?.user?.name,
           },
         })
-
-        console.log({ newPost })
       } else {
         // use existing subreddit...
-        console.log('using exitiing subreddit')
-        console.log(getSubredditListByTopic)
-
         const image = formData.postImage || ''
         const {
           data: { insertPost: newPost },
@@ -110,11 +86,7 @@ const PostBox = ({ subreddit }: Props) => {
             username: session?.user?.name,
           },
         })
-
-        console.log('new post was added', newPost)
       }
-
-      // After post has been added
       setValue('postBody', '')
       setValue('postTitle', '')
       setValue('postImage', '')

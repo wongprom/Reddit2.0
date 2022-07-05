@@ -38,8 +38,6 @@ const PostPage = () => {
   const post: Post = data?.getPostListByPostId
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
-    // post comment here....
-
     const notification = toast.loading('Posting your comment...')
 
     await addComment({
